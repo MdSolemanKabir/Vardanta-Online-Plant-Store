@@ -1,0 +1,573 @@
+/* ==========================================================================
+   Blooming Oasis — single-file stylesheet (no JavaScript)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+    --ink: #1B2A20;
+    --paper: #EFF3E9;
+    --card: #FBFAF3;
+    --moss: #4F7A5B;
+    --moss-dk: #38573F;
+    --gold: #C79A2B;
+    --clay: #B0592E;
+    --line: rgba(27, 42, 32, 0.14);
+
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --radius: 14px;
+    --wrap: 1180px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+}
+
+img,
+video {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    margin: 0 0 .5em;
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+:focus-visible {
+    outline: 2px solid var(--moss-dk);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+.wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.eyebrow {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--moss-dk);
+    display: inline-block;
+    margin-bottom: .6em;
+}
+
+.vein {
+    width: 100%;
+    height: 34px;
+    display: block;
+    margin: 0 auto;
+}
+
+.vein path {
+    stroke: var(--moss);
+    stroke-width: 1.4;
+    fill: none;
+    opacity: .55;
+}
+
+.grid {
+    display: grid;
+    gap: 24px;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: .95rem;
+    padding: 13px 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+.btn-primary {
+    background: var(--moss-dk);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--ink);
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.btn-ghost:hover {
+    background: var(--ink);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.section {
+    padding: 76px 0;
+}
+
+.section-tight {
+    padding: 44px 0;
+}
+
+/* Nav — full-container width, underline-grow hover effect */
+.site-header {
+    width: 100%;
+    background: var(--ink);
+    color: #F3F1E4;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    max-width: var(--wrap);
+    margin: 0 auto;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--display);
+    font-size: 1.25rem;
+}
+
+.brand svg {
+    width: 26px;
+    height: 26px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 34px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    position: relative;
+    font-size: .95rem;
+    padding: 6px 0;
+    color: #F3F1E4;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-cta {
+    font-family: var(--mono);
+    font-size: .78rem;
+    letter-spacing: .06em;
+}
+
+/* Footer */
+.site-footer {
+    background: var(--ink);
+    color: #EAE7D8;
+    padding: 52px 0 26px;
+    margin-top: 80px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 34px;
+}
+
+.footer-grid h4 {
+    font-family: var(--body);
+    font-size: .82rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+}
+
+.footer-grid ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.footer-grid a:hover {
+    color: var(--gold);
+}
+
+.social-row {
+    display: flex;
+    gap: 14px;
+}
+
+.social-row a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s, border-color .2s;
+}
+
+.social-row a:hover {
+    background: var(--moss);
+    border-color: var(--moss);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .14);
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: .76rem;
+    color: #B9C4B4;
+}
+
+/* Cards / photo tiles / chips */
+.card {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    padding: 26px;
+}
+
+.chip {
+    /* display: inline-flex; */
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: .74rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(79, 122, 91, .12);
+    color: var(--moss-dk);
+    margin: 0 8px 8px 0;
+}
+
+.chip.warn {
+    background: rgba(176, 89, 46, .14);
+    color: var(--clay);
+}
+
+/* photo tile: wraps an <img> with a caption pill on top */
+.photo-tile {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background: #DDE3D2;
+}
+
+.photo-tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-tile span {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 2;
+    background: rgba(0, 0, 0, .45);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: .72rem;
+    padding: 4px 9px;
+    border-radius: 999px;
+}
+
+/* Team list — hand-styled per spec (bg colour, hover, border, radius) */
+.team-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.team-list li {
+    background: #F8F4E3;
+    border: 1px solid #DDD3AE;
+    border-radius: 18px;
+    padding: 20px 22px;
+    width: 260px;
+    transition: background-color .25s ease, transform .2s ease, box-shadow .25s ease;
+}
+
+.team-list li:hover {
+    background-color: #EFE6C2;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(27, 42, 32, .14);
+}
+
+.team-list h3 {
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+}
+
+.team-list .role {
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--moss-dk);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+.team-list .photo-tile {
+    aspect-ratio: 1/1;
+    margin-bottom: 12px;
+}
+
+/* Plant Matchmaker — static match guide (no JS, so no branching quiz) */
+.match-guide {
+    background: var(--ink);
+    color: #F3F1E4;
+    border-radius: 24px;
+    padding: 46px;
+}
+
+.match-card {
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.match-card .eyebrow {
+    color: var(--gold);
+}
+
+/* Confirmation modal — shown with pure CSS via :target, no JS */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 42, 32, .55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+}
+
+#confirmation:target {
+    display: flex;
+}
+
+.modal {
+    background: var(--card);
+    border-radius: 18px;
+    max-width: 420px;
+    width: 100%;
+    padding: 34px;
+    text-align: center;
+}
+
+.modal svg {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+}
+
+.modal h3 {
+    margin-bottom: 8px;
+}
+
+/* Forms */
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-family: var(--mono);
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 6px;
+    color: var(--moss-dk);
+}
+
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: var(--body);
+    font-size: .95rem;
+    color: var(--ink);
+}
+
+.field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    border-color: var(--moss);
+}
+
+/* Live-chat entry point — a styled link, not a JS launcher */
+.chat-launcher {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    background: var(--moss-dk);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 26px rgba(27, 42, 32, .3);
+    font-size: .9rem;
+    z-index: 60;
+}
+
+.chat-launcher:hover {
+    background: var(--ink);
+}
+
+/* Page switching via CSS :target — #home is last in source and shown by
+   default; the other three pages hide it via the general-sibling rule below */
+.page {
+    display: none;
+    scroll-margin-top: 90px;
+}
+
+#home {
+    display: block;
+}
+
+.page:target {
+    display: block;
+}
+
+#product:target~#home,
+#about:target~#home,
+#contact:target~#home {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+    .nav-links {
+        display: none;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .match-guide .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
